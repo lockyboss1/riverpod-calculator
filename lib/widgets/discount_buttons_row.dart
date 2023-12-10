@@ -27,16 +27,16 @@ class DiscountButtonsRow extends ConsumerWidget {
     final calculator = ref.read(calculatorProvider.notifier);
 
     switch (buttonText) {
-      case 'Clear':
+      case '10% off':
         calculator.reset();
         break;
-      case 'Enter':
+      case '20% off':
         calculator.equals();
         break;
-      case '<':
+      case '30% off':
         calculator.delete();
         break;
-      case '':
+      case '50% off':
         break;
       default:
         calculator.append(buttonText);
@@ -48,34 +48,29 @@ class DiscountButtonsRow extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Expanded(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: buttonsRow
             .map<Widget>(
               (text) => Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    border: Border.all(color: Colors.grey),
-                    shape: BoxShape.rectangle,
-                  ),
-                  width: 10.0,
-                  height: double.infinity,
-                  margin: const EdgeInsets.all(11),
-                  child: ElevatedButton(
-                    onPressed: () => onClickedButton(text, ref),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: getBackgroundColor(text),
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                child: ElevatedButton(
+                  onPressed: () => onClickedButton(text, ref),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(const Color(0xFFFEFAE0)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            20.0),
+                            side: const BorderSide(color: Colors.grey),
                       ),
                     ),
-                    child: Text(
-                      text,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  ),
+                  child: Text(
+                    text,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

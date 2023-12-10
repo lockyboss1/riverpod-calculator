@@ -24,9 +24,8 @@ class CalculatorPage extends StatelessWidget {
       body: const SafeArea(
         child: Column(
           children: [
-            //Expanded(child: DiscountButtons()),
-            //Expanded(child: CalculatorResult()),
-            Expanded(flex: 2, child: CalculatorButtons())
+            Expanded(flex: 1, child: DiscountButtons()),
+            Expanded(flex: 3, child: CalculatorButtons())
           ],
         ),
       ),

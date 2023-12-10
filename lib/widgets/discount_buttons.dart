@@ -13,7 +13,7 @@ class DiscountButtons extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
         color: Colors.transparent,
-        borderRadius: BorderRadius.vertical(),
+        //borderRadius: BorderRadius.vertical(),
       ),
       child: const Column(
         children: [
