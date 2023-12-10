@@ -26,7 +26,7 @@ class CalculatorButtonsRow extends ConsumerWidget {
         calculator.reset();
         break;
       case 'Enter':
-        calculator.equals();
+        //calculator.equals();
         break;
       case '<':
         calculator.delete();

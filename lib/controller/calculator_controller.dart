@@ -44,6 +44,41 @@ class CalculatorNotifier extends StateNotifier<Calculator> {
     );
   }
 
+  void calculateDiscount(double discountPercentage) {
+    try {
+      final expression =
+          state.equation.replaceAll('⨯', '*').replaceAll('÷', '/');
+      final exp = Parser().parse(expression);
+      final model = ContextModel();
+
+      final originalAmount = exp.evaluate(EvaluationType.REAL, model);
+
+      if (originalAmount is double) {
+        final discountedAmount =
+            originalAmount * (1.0 - (discountPercentage / 100.0));
+        state = state.copyWith(result: discountedAmount.toString());
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  void apply10PercentDiscount() {
+    calculateDiscount(10);
+  }
+
+  void apply20PercentDiscount() {
+    calculateDiscount(20);
+  }
+
+  void apply30PercentDiscount() {
+    calculateDiscount(30);
+  }
+
+  void apply50PercentDiscount() {
+    calculateDiscount(50);
+  }
+
   void append(String buttonText) {
     final equation = () {
       if (Utils.isOperator(buttonText) &&
