@@ -16,7 +16,7 @@ class DiscountButtonsRow extends ConsumerWidget {
   Color getBackgroundColor(String buttonText) {
     switch (buttonText) {
       case '10% off':
-        return Colors.amber;
+        return Colors.orange;
       default:
         return const Color(0xFFFEFAE0);
     }
